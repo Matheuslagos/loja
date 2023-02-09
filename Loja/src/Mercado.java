@@ -7,13 +7,30 @@ public class Mercado {
     private static Scanner input = new Scanner(System.in);
     private static ArrayList<Produto> produtos;
     private static Map<Produto, Integer> carrinho;
+    
+
+   
 
     public static void main(String[] args) {
         produtos = new ArrayList<>();
         carrinho = new HashMap<>();
-        menu();
-    }
+        List<Usuario> usuarios = new ArrayList<>();
+        Usuario user= new Usuario("Mat", "a@hot", "123");
+        usuarios.add(user);
+        switch (key) {
+            case 1:
+                
+                break;
+            case 2:
 
+            
+                break;
+        }
+
+        menu();
+        
+    }
+       
     private static void menu() {
         System.out.println("----------------------------------------");
         System.out.println("---------------LOJA---------------------");
