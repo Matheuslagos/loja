@@ -32,10 +32,10 @@ public class Produto {
         this.preco = preco;
     }
 
-    public String toString(){
-        return "Id: "+this.getId()+
-            "\nNome" + this.getNome()+
-            "\nPreço"+ Utils.doubleToString(this.getPreco())
+    public String toString() {
+        return "Id: " + this.getId() +
+                "\nNome " + this.getNome() +
+                "\nPreço" + Utils.doubleToString(this.getPreco());
 
     }
 

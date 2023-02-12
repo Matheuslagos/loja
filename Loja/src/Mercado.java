@@ -7,30 +7,15 @@ public class Mercado {
     private static Scanner input = new Scanner(System.in);
     private static ArrayList<Produto> produtos;
     private static Map<Produto, Integer> carrinho;
-    
-
-   
 
     public static void main(String[] args) {
         produtos = new ArrayList<>();
         carrinho = new HashMap<>();
-        List<Usuario> usuarios = new ArrayList<>();
-        Usuario user= new Usuario("Mat", "a@hot", "123");
-        usuarios.add(user);
-        switch (key) {
-            case 1:
-                
-                break;
-            case 2:
-
-            
-                break;
-        }
 
         menu();
-        
+
     }
-       
+
     private static void menu() {
         System.out.println("----------------------------------------");
         System.out.println("---------------LOJA---------------------");
@@ -45,14 +30,18 @@ public class Mercado {
             case 1:
                 cadastrarProdutos();
                 break;
-                case2: listarProdutos();
+            case 2:
+                listarProdutos();
                 break;
-                case3: comprarProduto();
+            case 3:
+                comprarProduto();
                 break;
-                case4: verCarrinho();
+            case 4:
+                verCarrinho();
                 break;
-                case5: System.out.println("volte sempre");
-                System.exit(option);
+            case 5:
+                System.out.println("volte sempre");
+                System.exit(0);
             default:
                 System.out.println("invalido");
                 menu();
@@ -65,13 +54,13 @@ public class Mercado {
         System.out.println("Nome do produto");
         String nome = input.next();
 
-        System.out.println("PREÇO");
+        System.out.println("Preço");
         double preco = input.nextDouble();
 
         Produto produto = new Produto(nome, preco);
         produtos.add(produto);
 
-        System.out.println(produto.getNome() + "cadastrado com sucesso");
+        System.out.println(produto.getNome() + " cadastrado(a) com sucesso");
         menu();
 
     }
@@ -80,11 +69,84 @@ public class Mercado {
         if (produtos.size() > 0) {
             System.out.println("Lista de produtos\n");
             for (Produto p : produtos) {
-                System.out.println("p");
+                System.out.println(p);
             }
         } else {
             System.out.println("Nenhum produto cadastrado");
         }
+        menu();
+    }
+
+    private static void comprarProduto() {
+        if (produtos.size() > 0) {
+            System.out.println("Codigo do produto: \n");
+
+            System.out.println("---------------produtos disponiveis-----------\n");
+            for (Produto p : produtos) {
+                System.out.println(p + "\n");
+            }
+            int id = Integer.parseInt(input.next());
+            boolean isPresent = false;
+
+            for (Produto p : produtos) {
+                if (p.getId() == id) {
+                    int qtd = 0;
+                    try {
+                        qtd = carrinho.get(p);
+                        carrinho.put(p, qtd + 1);
+                    } catch (NullPointerException e) {
+                        carrinho.put(p, 1);
+                    }
+                    System.out.println(p.getNome() + "adicionado ao carrinho.");
+                    isPresent = true;
+
+                    if (isPresent) {
+                        System.out.println("deseja adicionar outro produto ao carrinho?");
+                        System.out.println("digite 1 para sim, 0 para finalizar a compra.\n");
+                        int option = Integer.parseInt(input.next());
+
+                        if (option == 1) {
+                            comprarProduto();
+
+                        } else {
+                            finalizarCompra();
+                        }
+                    }
+                } else {
+                    System.out.println("Produto nao encontrado");
+                    menu();
+                }
+            }
+        } else {
+            System.out.println("Produto nao encontrado");
+            menu();
+        }
+    }
+
+    private static void verCarrinho() {
+        System.out.println("---Produto no seu carrinho!---");
+        if (carrinho.size() > 0) {
+            for (Produto p : carrinho.keySet()) {
+                System.out.println("Produto: " + p + "\nQuantidade: " + carrinho.get(p));
+            }
+        } else {
+            System.out.println("carrinho vazio!");
+        }
+        menu();
+    }
+
+    private static void finalizarCompra() {
+        Double valorDaCompra = 0.0;
+        System.out.println("Seus produtos!");
+        for (Produto p : carrinho.keySet()) {
+            int qtd = carrinho.get(p);
+            valorDaCompra += p.getPreco() * qtd;
+            System.out.println("Quantidade " + qtd);
+            System.out.println("\n");
+        }
+        System.out.println("O valor da sua compra é: " + Utils.doubleToString(valorDaCompra));
+        carrinho.clear();
+        System.out.println("volte sempre!");
         menu();
     }
 
