@@ -50,18 +50,23 @@ public class Mercado {
         }
     }
 
-    private static void cadastrarProdutos() {
+     private static void cadastrarProdutos() {
         System.out.println("Nome do produto");
         String nome = input.next();
 
         System.out.println("Preço");
         double preco = input.nextDouble();
 
-        Produto produto = new Produto(nome, preco);
+        System.out.println("Descricao do produto");
+        String descricao = input.next();
+
+        Produto produto = new Produto(nome, preco, descricao);
         produtos.add(produto);
 
         System.out.println(produto.getNome() + " cadastrado(a) com sucesso");
         menu();
+
+    
 
     }
 
