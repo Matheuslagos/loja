@@ -50,23 +50,22 @@ public class Mercado {
         }
     }
 
-     private static void cadastrarProdutos() {
-        System.out.println("Nome do produto");
+    private static void cadastrarProdutos() {
+        System.out.println("Nome do produto ");
         String nome = input.next();
 
         System.out.println("Preço");
-        double preco = input.nextDouble();
+        Double preco = input.nextDouble();
 
-        System.out.println("Descricao do produto");
-        String descricao = input.next();
+        System.out.printf("Descricao do produto \n");
+        String descricao = input.nextLine();
+        descricao = input.nextLine();
 
         Produto produto = new Produto(nome, preco, descricao);
         produtos.add(produto);
 
         System.out.println(produto.getNome() + " cadastrado(a) com sucesso");
         menu();
-
-    
 
     }
 
@@ -86,7 +85,7 @@ public class Mercado {
         if (produtos.size() > 0) {
             System.out.println("Codigo do produto: \n");
 
-            System.out.println("---------------produtos disponiveis-----------\n");
+            System.out.println("--------produtos disponiveis------DIGITE O ID PARA COMPRAR--\n");
             for (Produto p : produtos) {
                 System.out.println(p + "\n");
             }
@@ -102,7 +101,7 @@ public class Mercado {
                     } catch (NullPointerException e) {
                         carrinho.put(p, 1);
                     }
-                    System.out.println(p.getNome() + "adicionado ao carrinho.");
+                    System.out.println(p.getNome() + " adicionado ao carrinho.");
                     isPresent = true;
 
                     if (isPresent) {
