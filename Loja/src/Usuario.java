@@ -1,4 +1,4 @@
-public class Usuario{
+public class Usuario {
     private String nome;
     private String email;
     private String senha;
@@ -8,7 +8,5 @@ public class Usuario{
         this.email = email;
         this.senha = senha;
     }
-
-    
 
 }
