@@ -11,14 +11,35 @@ public class Mercado {
     public static void main(String[] args) {
         produtos = new ArrayList<>();
         carrinho = new HashMap<>();
+        String username, password;
 
+        System.out.println("Cadastro");
+        System.out.print("Insira o nome de usuário: ");
+        username = input.nextLine();
+        System.out.print("Insira a senha: ");
+        password = input.nextLine();
+
+        while (true) {
+            System.out.println("\nLogin");
+            System.out.print("Insira o nome de usuário: ");
+            String loginUsername = input.nextLine();
+            System.out.print("Insira a senha: ");
+            String loginPassword = input.nextLine();
+            if (username.equals(loginUsername) && password.equals(loginPassword)) {
+                System.out.println("\nBem-vindo ao menu do programa");
+                menu();
+                break;
+            } else {
+                System.out.println("\nNome de usuário ou senha inválidos. Tente novamente.");
+            }
+        }
         menu();
 
     }
 
     private static void menu() {
         System.out.println("----------------------------------------");
-        System.out.println("---------------LOJA---------------------");
+        System.out.println("------------------LOJA------------------");
         System.out.println("---------SELECIONE UMA OPCAO------------");
         System.out.println("---------------1-CADASTRAR--------------");
         System.out.println("---------------2-LISTAR-----------------");
