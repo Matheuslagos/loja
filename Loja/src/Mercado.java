@@ -18,7 +18,11 @@ public class Mercado {
         username = input.nextLine();
         System.out.print("Insira a senha: ");
         password = input.nextLine();
+        login(username, password, input);
 
+    }
+
+    private static void login(String username, String password, Scanner input) {
         while (true) {
             System.out.println("\nLogin");
             System.out.print("Insira o nome de usuário: ");
@@ -33,7 +37,6 @@ public class Mercado {
                 System.out.println("\nNome de usuário ou senha inválidos. Tente novamente.");
             }
         }
-        menu();
 
     }
 
