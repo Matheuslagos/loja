@@ -13,7 +13,7 @@ public class Mercado {
         carrinho = new HashMap<>();
         String username, password;
 
-        System.out.println("Cadastro");
+        System.out.println("---------CADASTRO---------");
         System.out.print("Insira o nome de usuário: ");
         username = input.nextLine();
         System.out.print("Insira a senha: ");
@@ -31,6 +31,7 @@ public class Mercado {
             String loginPassword = input.nextLine();
             if (username.equals(loginUsername) && password.equals(loginPassword)) {
                 System.out.println("\nBem-vindo ao menu do programa");
+                produtodaLoja();
                 menu();
                 break;
             } else {
@@ -44,8 +45,8 @@ public class Mercado {
         System.out.println("----------------------------------------");
         System.out.println("------------------LOJA------------------");
         System.out.println("---------SELECIONE UMA OPCAO------------");
-        System.out.println("---------------1-CADASTRAR--------------");
-        System.out.println("---------------2-LISTAR-----------------");
+        System.out.println("---------------1-CADASTRAR UM PRODUTO---");
+        System.out.println("---------------2-LISTAR-PRODUTOS--------");
         System.out.println("---------------3-COMPRAR----------------");
         System.out.println("---------------4-CARRINHO---------------");
         System.out.println("---------------5-SAIR-------------------");
@@ -74,14 +75,24 @@ public class Mercado {
         }
     }
 
+    private static void produtodaLoja() {
+        String nome = "Cellphone";
+        Double preco = 1259.00;
+        String decricao = "O sistema operacional do dispositivo é fácil de usar e oferece acesso a uma ampla gama de aplicativos e jogos. ";
+        Produto produto = new Produto(nome, preco, decricao);
+        produtos.add(produto);
+
+    }
+
     private static void cadastrarProdutos() {
-        System.out.println("Nome do produto ");
+
+        System.out.println("Nome do produto: ");
         String nome = input.next();
 
-        System.out.println("Preço");
+        System.out.println("Preço: ");
         Double preco = input.nextDouble();
 
-        System.out.printf("Descricao do produto \n");
+        System.out.printf("Descricao do produto: \n");
         String descricao = input.nextLine();
         descricao = input.nextLine();
 
@@ -107,12 +118,13 @@ public class Mercado {
 
     private static void comprarProduto() {
         if (produtos.size() > 0) {
-            System.out.println("Codigo do produto: \n");
 
             System.out.println("--------produtos disponiveis------DIGITE O ID PARA COMPRAR--\n");
+
             for (Produto p : produtos) {
                 System.out.println(p + "\n");
             }
+            System.out.println("Codigo do produto: \n");
             int id = Integer.parseInt(input.next());
             boolean isPresent = false;
 
@@ -152,7 +164,7 @@ public class Mercado {
     }
 
     private static void verCarrinho() {
-        System.out.println("---Produto no seu carrinho!---");
+        System.out.println("---Produtos no seu carrinho: ");
         if (carrinho.size() > 0) {
             for (Produto p : carrinho.keySet()) {
                 System.out.println("Produto: " + p + "\nQuantidade: " + carrinho.get(p));

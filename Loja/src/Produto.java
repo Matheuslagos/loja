@@ -13,6 +13,7 @@ public class Produto {
         this.descricao = descricao;
         Produto.count += 1;
     }
+
     public String getDescricao() {
         return descricao;
     }
@@ -20,6 +21,7 @@ public class Produto {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
     public int getId() {
         return id;
     }
@@ -39,17 +41,13 @@ public class Produto {
     public void setPreco(Double preco) {
         this.preco = preco;
     }
-    
+
     public String toString() {
         return "Id: " + this.getId() +
-                "\nNome " + this.getNome() +
-                "\nDescriçao " + this.getDescricao() +
-                "\nPreço" + Utils.doubleToString(this.getPreco());
+                "\nNome: " + this.getNome() +
+                "\nDescriçao: " + this.getDescricao() +
+                "\nPreço: " + Utils.doubleToString(this.getPreco());
 
     }
-
-    
-
-    
 
 }
